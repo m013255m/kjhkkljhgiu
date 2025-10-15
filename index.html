@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة طوكيو - رولمان بلي وكراسي الزهر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* المتغيرات العامة */
         :root {
@@ -21,7 +22,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
 
         html {
@@ -32,6 +33,7 @@
             background-color: var(--light-color);
             color: var(--dark-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -97,6 +99,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
         }
 
         .header-container {
@@ -111,14 +114,35 @@
             align-items: center;
         }
 
-        .logo h1 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-right: 10px;
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            margin-left: 10px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(198, 40, 40, 0.3);
         }
 
-        .logo span {
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .logo-text span {
             color: var(--secondary-color);
+            font-size: 0.9rem;
         }
 
         nav ul {
@@ -165,7 +189,7 @@
 
         /* قسم الهيرو */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1597852075230-7a9427ff5d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -174,22 +198,43 @@
             text-align: center;
             color: white;
             margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(198, 40, 40, 0.3), rgba(255, 152, 0, 0.3));
+            z-index: 1;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            animation: fadeInDown 1s ease;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero .btn {
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
         /* قسم من نحن */
@@ -223,6 +268,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .about-image img {
@@ -253,6 +299,24 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-card:hover {
@@ -308,6 +372,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            position: relative;
         }
 
         .product-card:hover {
@@ -373,6 +438,24 @@
             border-radius: 10px;
             padding: 30px;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-color);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover::before {
+            transform: scaleX(1);
         }
 
         .testimonial-card:hover {
@@ -416,6 +499,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin-left: 15px;
+            border: 2px solid var(--accent-color);
         }
 
         .author-img img {
@@ -612,6 +696,62 @@
             color: #aaa;
         }
 
+        /* مكتبات جاهزة */
+        .offices {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .office-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .office-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .office-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .office-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .office-card:hover .office-img img {
+            transform: scale(1.1);
+        }
+
+        .office-content {
+            padding: 25px;
+        }
+
+        .office-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .office-content p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
         /* التجاوب مع الشاشات المختلفة */
         @media (max-width: 992px) {
             .about-content {
@@ -658,14 +798,74 @@
                 font-size: 2rem;
             }
         }
+
+        /* تأثيرات الحركة */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* تأثيرات التمرير */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تأثيرات خاصة للشعار */
+        .logo-img {
+            animation: pulse 3s infinite;
+        }
     </style>
 </head>
 <body>
     <!-- الشريط العلوي -->
-    <header>
+    <header id="header">
         <div class="container header-container">
             <div class="logo">
-                <h1>طوكيو <span>للصناعات</span></h1>
+                <div class="logo-img">T</div>
+                <div class="logo-text">
+                    <h1>طوكيو</h1>
+                    <span>للصناعات الهندسية</span>
+                </div>
             </div>
             <nav>
                 <div class="mobile-menu">
@@ -676,7 +876,8 @@
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#services">خدماتنا</a></li>
                     <li><a href="#products">منتجاتنا</a></li>
-                    <li><a href="#testimonials">تجارب العملاء</a></li>
+                    <li><a href="#offices">مكاتبنا</a></li>
+                    <li><a href="#testimonials">آراء العملاء</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
             </nav>
@@ -722,7 +923,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="رولمان بلي">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="رولمان بلي">
                     </div>
                     <div class="service-content">
                         <h3>رولمان بلي</h3>
@@ -742,7 +943,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="مواد التشحيم">
+                        <img src="https://images.unsplash.com/photo-1621905251180-8f5cc0c87051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="مواد التشحيم">
                     </div>
                     <div class="service-content">
                         <h3>مواد التشحيم</h3>
@@ -763,7 +964,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="رولمان بلي كروي">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="رولمان بلي كروي">
                     </div>
                     <div class="product-content">
                         <h3>رولمان بلي كروي</h3>
@@ -790,7 +991,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="شحم صناعي">
+                        <img src="https://images.unsplash.com/photo-1621905251180-8f5cc0c87051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="شحم صناعي">
                     </div>
                     <div class="product-content">
                         <h3>شحم صناعي متخصص</h3>
@@ -801,11 +1002,52 @@
         </div>
     </section>
 
+    <!-- قسم المكاتب -->
+    <section class="offices" id="offices">
+        <div class="container">
+            <div class="section-title">
+                <h2>مكاتبنا</h2>
+            </div>
+            <div class="offices-grid">
+                <div class="office-card">
+                    <div class="office-img">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="مكتب القاهرة">
+                    </div>
+                    <div class="office-content">
+                        <h3>مكتب القاهرة</h3>
+                        <p>المقر الرئيسي لشركة طوكيو في منطقة مدينة نصر، مجهز بأحدث التقنيات ومركز خدمة عملاء على أعلى مستوى.</p>
+                        <a href="#contact" class="btn">زيارة المكتب</a>
+                    </div>
+                </div>
+                <div class="office-card">
+                    <div class="office-img">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="مكتب الإسكندرية">
+                    </div>
+                    <div class="office-content">
+                        <h3>مكتب الإسكندرية</h3>
+                        <p>يخدم محافظات الدلتا والساحل الشمالي، مزود بمخازن واسعة لتلبية احتياجات العملاء بسرعة.</p>
+                        <a href="#contact" class="btn">زيارة المكتب</a>
+                    </div>
+                </div>
+                <div class="office-card">
+                    <div class="office-img">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="مكتب السويس">
+                    </div>
+                    <div class="office-content">
+                        <h3>مكتب السويس</h3>
+                        <p>متخصص في خدمة القطاع الصناعي في منطقة قناة السويس والمناطق الصناعية المحيطة.</p>
+                        <a href="#contact" class="btn">زيارة المكتب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- قسم تجارب العملاء -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>تجارب عملائنا</h2>
+                <h2>آراء عملائنا</h2>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
@@ -818,7 +1060,7 @@
                         </div>
                         <div class="author-info">
                             <h4>أحمد محمد</h4>
-                            <p>مدير مصنع</p>
+                            <p>مدير مصنع - القاهرة</p>
                         </div>
                     </div>
                 </div>
@@ -832,7 +1074,7 @@
                         </div>
                         <div class="author-info">
                             <h4>محمود عبدالله</h4>
-                            <p>مهندس صيانة</p>
+                            <p>مهندس صيانة - الإسكندرية</p>
                         </div>
                     </div>
                 </div>
@@ -846,7 +1088,7 @@
                         </div>
                         <div class="author-info">
                             <h4>فاطمة خالد</h4>
-                            <p>مديرة مشتريات</p>
+                            <p>مديرة مشتريات - السويس</p>
                         </div>
                     </div>
                 </div>
@@ -870,21 +1112,21 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>العنوان</h4>
-                                <p>المنطقة الصناعية، مدينة الرياض، المملكة العربية السعودية</p>
+                                <p>مدينة نصر، القاهرة، مصر</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
                             <div>
                                 <h4>الهاتف</h4>
-                                <p>+966 11 123 4567</p>
+                                <p>+20 100 123 4567</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>البريد الإلكتروني</h4>
-                                <p>info@tokyo-industries.com</p>
+                                <p>info@tokyo-egypt.com</p>
                             </div>
                         </div>
                     </div>
@@ -916,7 +1158,7 @@
                             <textarea id="message" class="form-control" required></textarea>
                         </div>
                         <button type="submit" class="btn">إرسال الرسالة</button>
-                        <a href="https://wa.me/966111234567" class="btn whatsapp-btn" target="_blank">
+                        <a href="https://wa.me/201001234567" class="btn whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
                         </a>
                     </form>
@@ -946,7 +1188,8 @@
                         <li><a href="#about">من نحن</a></li>
                         <li><a href="#services">خدماتنا</a></li>
                         <li><a href="#products">منتجاتنا</a></li>
-                        <li><a href="#testimonials">تجارب العملاء</a></li>
+                        <li><a href="#offices">مكاتبنا</a></li>
+                        <li><a href="#testimonials">آراء العملاء</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -963,9 +1206,9 @@
                 <div class="footer-col">
                     <h3>اتصل بنا</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> المنطقة الصناعية، الرياض</li>
-                        <li><i class="fas fa-phone"></i> +966 11 123 4567</li>
-                        <li><i class="fas fa-envelope"></i> info@tokyo-industries.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> مدينة نصر، القاهرة</li>
+                        <li><i class="fas fa-phone"></i> +20 100 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@tokyo-egypt.com</li>
                     </ul>
                 </div>
             </div>
@@ -1015,18 +1258,29 @@
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
         // تطبيق تأثير الظهور على العناصر
-        document.querySelectorAll('.service-card, .product-card, .testimonial-card').forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        document.querySelectorAll('.service-card, .product-card, .testimonial-card, .office-card').forEach(card => {
+            card.classList.add('fade-in');
             observer.observe(card);
+        });
+
+        // تأثير تغيير الشريط العلوي عند التمرير
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if(window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
         });
     </script>
 </body>
