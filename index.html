@@ -138,161 +138,6 @@
         [data-aos] {
             will-change: transform, opacity;
         }
-
-        /* Enhanced Portfolio Cards Styling */
-        .portfolio-card {
-            padding: 2rem 1.5rem;
-            border-radius: 1.25rem;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            min-height: 220px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 2px;
-            background: linear-gradient(135deg, transparent 40%, rgba(212, 175, 55, 0.3) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .portfolio-card:hover::before {
-            opacity: 1;
-        }
-        .portfolio-card .icon-wrapper {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .portfolio-card:hover .icon-wrapper {
-            transform: scale(1.12) rotate(-5deg);
-        }
-        .portfolio-card .arrow-link {
-            margin-top: 0.75rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-        }
-        .portfolio-card:hover .arrow-link {
-            gap: 0.9rem;
-        }
-        .portfolio-card .arrow-link i {
-            transition: transform 0.3s ease;
-        }
-        .portfolio-card:hover .arrow-link i {
-            transform: translateX(-4px);
-        }
-
-        /* Services Cards */
-        .service-card {
-            background: rgba(18, 25, 44, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 2rem 1.5rem;
-            border-radius: 1.25rem;
-            text-align: center;
-        }
-        .service-card:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -12px rgba(212, 175, 55, 0.15);
-        }
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.25rem;
-            background: rgba(212, 175, 55, 0.08);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        /* Skills badges */
-        .skill-badge {
-            padding: 0.6rem 1.2rem;
-            border-radius: 9999px;
-            background: rgba(18, 25, 44, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.12);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        .skill-badge:hover {
-            border-color: rgba(212, 175, 55, 0.5);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.08);
-        }
-
-        /* Experience Timeline */
-        .timeline-item {
-            position: relative;
-            padding-right: 2rem;
-            border-right: 2px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 2.5rem;
-        }
-        .timeline-item:last-child {
-            border-right: none;
-            padding-bottom: 0;
-        }
-        .timeline-dot {
-            position: absolute;
-            right: -8px;
-            top: 4px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #d4af37;
-            border: 3px solid #0a0f1d;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Contact Form */
-        .form-input {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            border-radius: 0.75rem;
-            background: rgba(18, 25, 44, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.12);
-            color: #fff;
-            transition: all 0.3s ease;
-            font-family: 'Cairo', sans-serif;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: #d4af37;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-        }
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-        .form-textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
     </style>
 </head>
 <body class="selection:bg-brand-gold selection:text-black">
@@ -390,48 +235,41 @@
                 خبرة تزيد عن 7 سنوات في تحويل ميزانيات الإعلانات إلى أرباح حقيقية، وبناء الحملات الإستراتيجية عالية العائد (ROAS)، مع إنتاج وصناعة محتوى بصري وتصميمات احترافية تجذب العملاء.
             </p>
 
-            <!-- Enhanced Portfolio Links Section - LARGER SIZE -->
-            <div id="portfolio-links" class="bg-brand-card/95 border-2 border-brand-gold/40 rounded-3xl p-8 sm:p-10 max-w-6xl mx-auto shadow-2xl shadow-brand-gold/10 backdrop-blur-md mb-12 sm:mb-16" data-aos="zoom-in" data-aos-delay="500">
-                <h3 class="text-xl sm:text-2xl font-bold text-brand-gold mb-8 flex items-center justify-center gap-3">
-                    <i class="fa-solid fa-folder-open text-2xl"></i>
-                    <span>روابط المعارض السريعة — اكتشف أعمالي</span>
+            <!-- Portfolio Links Section - ENLARGED VERSION with medium text -->
+            <div id="portfolio-links" class="bg-brand-card/90 border border-brand-gold/30 rounded-2xl p-8 sm:p-10 max-w-5xl mx-auto shadow-2xl backdrop-blur-md mb-10 sm:mb-14" data-aos="zoom-in" data-aos-delay="500">
+                <h3 class="text-base sm:text-xl font-bold text-brand-gold mb-6 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-folder-open"></i> روابط المعارض السريعة Direct Portfolio Links:
                 </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                     
-                    <!-- Card 1: Media Buying Projects -->
-                    <a href="https://drive.google.com" target="_blank" class="portfolio-card bg-gradient-to-br from-blue-950/50 to-brand-card border border-blue-500/30 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/20" data-aos="fade-up" data-aos-delay="600">
-                        <div class="icon-wrapper bg-blue-500/20 text-blue-400">
+                    <!-- Link 1: Media Buying Projects -->
+                    <a href="https://drive.google.com" target="_blank" class="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-blue-900/40 to-brand-card border border-blue-500/30 hover:border-blue-400 transition-all group flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="600">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl sm:text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
-                        <h4 class="font-bold text-lg sm:text-xl text-white group-hover:text-blue-400 transition-colors">شغل الميديا باير والنتائج</h4>
-                        <p class="text-sm text-gray-400 mt-2 max-w-xs">تقارير الحملات والميزانيات ونتائج ROAS القياسية</p>
-                        <span class="arrow-link text-blue-400">
-                            عرض الأعمال <i class="fa-solid fa-arrow-left text-xs"></i>
-                        </span>
+                        <h4 class="font-bold text-base sm:text-lg text-white group-hover:text-blue-400 transition-colors">شغل الميديا باير والنتائج</h4>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-1.5">تقارير الحملات والميزانيات ونتائج ROAS</p>
+                        <span class="mt-3 text-xs sm:text-sm text-blue-400 font-bold flex items-center gap-1">عرض الأعمال <i class="fa-solid fa-arrow-left text-xs"></i></span>
                     </a>
 
-                    <!-- Card 2: Videos Portfolio -->
-                    <a href="https://drive.google.com" target="_blank" class="portfolio-card bg-gradient-to-br from-red-950/50 to-brand-card border border-red-500/30 hover:border-red-400 hover:shadow-xl hover:shadow-red-500/20" data-aos="fade-up" data-aos-delay="700">
-                        <div class="icon-wrapper bg-red-500/20 text-red-400">
+                    <!-- Link 2: Videos Portfolio -->
+                    <a href="https://drive.google.com" target="_blank" class="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-red-900/40 to-brand-card border border-red-500/30 hover:border-red-400 transition-all group flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="700">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center text-xl sm:text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-solid fa-film"></i>
                         </div>
-                        <h4 class="font-bold text-lg sm:text-xl text-white group-hover:text-red-400 transition-colors">معرض الفيديوهات والمونتاج</h4>
-                        <p class="text-sm text-gray-400 mt-2 max-w-xs">فيديوهات إعلانية، ريلز، وموشن جرافيك احترافي</p>
-                        <span class="arrow-link text-red-400">
-                            شاهد الأعمال <i class="fa-solid fa-arrow-left text-xs"></i>
-                        </span>
+                        <h4 class="font-bold text-base sm:text-lg text-white group-hover:text-red-400 transition-colors">معرض الفيديوهات والمونتاج</h4>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-1.5">فيديوهات إعلانية، ريلز، وموشن جرافيك</p>
+                        <span class="mt-3 text-xs sm:text-sm text-red-400 font-bold flex items-center gap-1">شاهد الأعمال <i class="fa-solid fa-arrow-left text-xs"></i></span>
                     </a>
 
-                    <!-- Card 3: Designs Portfolio -->
-                    <a href="https://behance.net" target="_blank" class="portfolio-card bg-gradient-to-br from-amber-950/50 to-brand-card border border-brand-gold/30 hover:border-brand-gold hover:shadow-xl hover:shadow-brand-gold/20" data-aos="fade-up" data-aos-delay="800">
-                        <div class="icon-wrapper bg-brand-gold/20 text-brand-gold">
+                    <!-- Link 3: Designs Portfolio -->
+                    <a href="https://behance.net" target="_blank" class="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-amber-900/40 to-brand-card border border-brand-gold/30 hover:border-brand-gold transition-all group flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="800">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xl sm:text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-solid fa-palette"></i>
                         </div>
-                        <h4 class="font-bold text-lg sm:text-xl text-white group-hover:text-brand-gold transition-colors">معرض التصميمات الجرافيكية</h4>
-                        <p class="text-sm text-gray-400 mt-2 max-w-xs">بوستات سوشيال ميديا وهويات بصرية مميزة</p>
-                        <span class="arrow-link text-brand-gold">
-                            تصفح التصاميم <i class="fa-solid fa-arrow-left text-xs"></i>
-                        </span>
+                        <h4 class="font-bold text-base sm:text-lg text-white group-hover:text-brand-gold transition-colors">معرض التصميمات الجرافيكية</h4>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-1.5">بوستات سوشيال ميديا وهويات بصرية</p>
+                        <span class="mt-3 text-xs sm:text-sm text-brand-gold font-bold flex items-center gap-1">تصفح التصاميم <i class="fa-solid fa-arrow-left text-xs"></i></span>
                     </a>
 
                 </div>
@@ -549,69 +387,57 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 
                 <!-- Service 1 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon text-brand-gold">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl text-center hover:border-brand-gold/50 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mx-auto mb-4">
                         <i class="fa-solid fa-bullhorn"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">إدارة الحملات الإعلانية</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        إدارة احترافية للحملات الإعلانية على جميع المنصات مع تحسين مستمر لتحقيق أعلى عائد على الاستثمار.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">إدارة احترافية للحملات الإعلانية على جميع المنصات مع تحسين مستمر لتحقيق أعلى عائد على الاستثمار.</p>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon text-brand-gold">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl text-center hover:border-brand-gold/50 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mx-auto mb-4">
                         <i class="fa-solid fa-chart-simple"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">تحليل البيانات والتقارير</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        تحليل دقيق للبيانات وتقارير متقدمة لفهم أداء الحملات واتخاذ قرارات مبنية على الأرقام.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">تحليل دقيق للبيانات وتقارير متقدمة لفهم أداء الحملات واتخاذ قرارات مبنية على الأرقام.</p>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon text-brand-gold">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl text-center hover:border-brand-gold/50 transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mx-auto mb-4">
                         <i class="fa-solid fa-video"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">إنتاج الفيديو والمونتاج</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        إنتاج فيديوهات إعلانية احترافية، ريلز، موشن جرافيك، ومونتاج عالي الجودة يجذب العملاء.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">إنتاج فيديوهات إعلانية احترافية، ريلز، موشن جرافيك، ومونتاج عالي الجودة يجذب العملاء.</p>
                 </div>
 
                 <!-- Service 4 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon text-brand-gold">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl text-center hover:border-brand-gold/50 transition-all" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mx-auto mb-4">
                         <i class="fa-solid fa-pen-fancy"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">التصميم الجرافيكي</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        تصميم هويات بصرية، بوستات سوشيال ميديا، إعلانات مصورة، ومواد تسويقية احترافية.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">تصميم هويات بصرية، بوستات سوشيال ميديا، إعلانات مصورة، ومواد تسويقية احترافية.</p>
                 </div>
 
                 <!-- Service 5 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon text-brand-gold">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl text-center hover:border-brand-gold/50 transition-all" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mx-auto mb-4">
                         <i class="fa-solid fa-bullseye"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">استراتيجيات التسويق</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        بناء استراتيجيات تسويق متكاملة تتناسب مع طبيعة عملك وأهدافك لتحقيق نمو مستدام.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">بناء استراتيجيات تسويق متكاملة تتناسب مع طبيعة عملك وأهدافك لتحقيق نمو مستدام.</p>
                 </div>
 
                 <!-- Service 6 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon text-brand-gold">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl text-center hover:border-brand-gold/50 transition-all" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mx-auto mb-4">
                         <i class="fa-solid fa-people-arrows"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">توليد العملاء المحتملين</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        استراتيجيات فعالة لتوليد عملاء محتملين وزيادة قاعدة العملاء عبر الحملات الإعلانية المدروسة.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">استراتيجيات فعالة لتوليد عملاء محتملين وزيادة قاعدة العملاء عبر الحملات الإعلانية المدروسة.</p>
                 </div>
 
             </div>
@@ -628,23 +454,23 @@
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6" data-aos="fade-up">
-                <div class="skill-badge text-center bg-brand-card/60 border-brand-gold/20">
+                <div class="glass-card p-4 text-center border-brand-gold/10 hover:border-brand-gold/30 transition-all">
                     <i class="fa-brands fa-facebook text-blue-500 text-2xl block mb-2"></i>
                     <span class="text-gray-200 text-sm font-semibold">Facebook Ads</span>
                 </div>
-                <div class="skill-badge text-center bg-brand-card/60 border-brand-gold/20">
+                <div class="glass-card p-4 text-center border-brand-gold/10 hover:border-brand-gold/30 transition-all">
                     <i class="fa-brands fa-instagram text-pink-500 text-2xl block mb-2"></i>
                     <span class="text-gray-200 text-sm font-semibold">Instagram Ads</span>
                 </div>
-                <div class="skill-badge text-center bg-brand-card/60 border-brand-gold/20">
+                <div class="glass-card p-4 text-center border-brand-gold/10 hover:border-brand-gold/30 transition-all">
                     <i class="fa-brands fa-google text-red-500 text-2xl block mb-2"></i>
                     <span class="text-gray-200 text-sm font-semibold">Google Ads</span>
                 </div>
-                <div class="skill-badge text-center bg-brand-card/60 border-brand-gold/20">
+                <div class="glass-card p-4 text-center border-brand-gold/10 hover:border-brand-gold/30 transition-all">
                     <i class="fa-brands fa-tiktok text-white text-2xl block mb-2"></i>
                     <span class="text-gray-200 text-sm font-semibold">TikTok Ads</span>
                 </div>
-                <div class="skill-badge text-center bg-brand-card/60 border-brand-gold/20">
+                <div class="glass-card p-4 text-center border-brand-gold/10 hover:border-brand-gold/30 transition-all">
                     <i class="fa-brands fa-linkedin text-blue-400 text-2xl block mb-2"></i>
                     <span class="text-gray-200 text-sm font-semibold">LinkedIn Ads</span>
                 </div>
@@ -653,16 +479,16 @@
             <div class="mt-12" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="text-xl font-bold text-white text-center mb-8">مهارات <span class="gold-gradient-text">إضافية</span></h3>
                 <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
-                    <span class="skill-badge">Adobe Premiere Pro</span>
-                    <span class="skill-badge">After Effects</span>
-                    <span class="skill-badge">Photoshop</span>
-                    <span class="skill-badge">Illustrator</span>
-                    <span class="skill-badge">CapCut</span>
-                    <span class="skill-badge">Google Analytics</span>
-                    <span class="skill-badge">Meta Business Suite</span>
-                    <span class="skill-badge">تحليل البيانات</span>
-                    <span class="skill-badge">Copywriting</span>
-                    <span class="skill-badge">إدارة الميزانيات</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">Adobe Premiere Pro</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">After Effects</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">Photoshop</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">Illustrator</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">CapCut</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">Google Analytics</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">Meta Business Suite</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">تحليل البيانات</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">Copywriting</span>
+                    <span class="glass-card px-4 py-2 text-sm text-gray-300 border-brand-gold/10 hover:border-brand-gold/30 transition-all">إدارة الميزانيات</span>
                 </div>
             </div>
         </div>
@@ -677,48 +503,33 @@
                 <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">مسيرة مهنية حافلة بالإنجازات في عالم التسويق الرقمي</p>
             </div>
 
-            <div class="max-w-3xl mx-auto">
+            <div class="max-w-3xl mx-auto space-y-6">
                 
                 <!-- Experience Item 1 -->
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-dot"></div>
-                    <div class="bg-brand-card/50 rounded-xl p-6 sm:p-8 border border-brand-gold/10 hover:border-brand-gold/30 transition-all">
-                        <div class="flex flex-wrap items-center justify-between mb-3">
-                            <h4 class="text-xl font-bold text-white">خبير تسويق إلكتروني وميديا باير</h4>
-                            <span class="text-sm text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full">2020 - الحالي</span>
-                        </div>
-                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                            إدارة حملات إعلانية بميزانيات تتجاوز الملايين على منصات متعددة، تحقيق أعلى عائد استثماري للشركات والعملاء، وتطوير استراتيجيات تسويق مبتكرة.
-                        </p>
+                <div class="glass-card p-6 sm:p-8 rounded-xl border-brand-gold/10 hover:border-brand-gold/30 transition-all" data-aos="fade-right">
+                    <div class="flex flex-wrap items-center justify-between mb-3">
+                        <h4 class="text-xl font-bold text-white">خبير تسويق إلكتروني وميديا باير</h4>
+                        <span class="text-sm text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full">2020 - الحالي</span>
                     </div>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">إدارة حملات إعلانية بميزانيات تتجاوز الملايين على منصات متعددة، تحقيق أعلى عائد استثماري للشركات والعملاء، وتطوير استراتيجيات تسويق مبتكرة.</p>
                 </div>
 
                 <!-- Experience Item 2 -->
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                    <div class="timeline-dot"></div>
-                    <div class="bg-brand-card/50 rounded-xl p-6 sm:p-8 border border-brand-gold/10 hover:border-brand-gold/30 transition-all">
-                        <div class="flex flex-wrap items-center justify-between mb-3">
-                            <h4 class="text-xl font-bold text-white">مونتير ومخرج فيديو</h4>
-                            <span class="text-sm text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full">2018 - 2020</span>
-                        </div>
-                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                            إنتاج ومونتاج فيديوهات إعلانية، ريلز، ومحتوى بصري احترافي لأكثر من 50 علامة تجارية، مع التركيز على سرد القصص البصرية الجذابة.
-                        </p>
+                <div class="glass-card p-6 sm:p-8 rounded-xl border-brand-gold/10 hover:border-brand-gold/30 transition-all" data-aos="fade-right" data-aos-delay="100">
+                    <div class="flex flex-wrap items-center justify-between mb-3">
+                        <h4 class="text-xl font-bold text-white">مونتير ومخرج فيديو</h4>
+                        <span class="text-sm text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full">2018 - 2020</span>
                     </div>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">إنتاج ومونتاج فيديوهات إعلانية، ريلز، ومحتوى بصري احترافي لأكثر من 50 علامة تجارية، مع التركيز على سرد القصص البصرية الجذابة.</p>
                 </div>
 
                 <!-- Experience Item 3 -->
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                    <div class="timeline-dot"></div>
-                    <div class="bg-brand-card/50 rounded-xl p-6 sm:p-8 border border-brand-gold/10 hover:border-brand-gold/30 transition-all">
-                        <div class="flex flex-wrap items-center justify-between mb-3">
-                            <h4 class="text-xl font-bold text-white">مصمم جرافيك</h4>
-                            <span class="text-sm text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full">2016 - 2018</span>
-                        </div>
-                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                            تصميم هويات بصرية، بوستات سوشيال ميديا، مواد إعلانية، وإنتاج تصاميم جرافيكية احترافية للعديد من المشاريع.
-                        </p>
+                <div class="glass-card p-6 sm:p-8 rounded-xl border-brand-gold/10 hover:border-brand-gold/30 transition-all" data-aos="fade-right" data-aos-delay="200">
+                    <div class="flex flex-wrap items-center justify-between mb-3">
+                        <h4 class="text-xl font-bold text-white">مصمم جرافيك</h4>
+                        <span class="text-sm text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-full">2016 - 2018</span>
                     </div>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">تصميم هويات بصرية، بوستات سوشيال ميديا، مواد إعلانية، وإنتاج تصاميم جرافيكية احترافية للعديد من المشاريع.</p>
                 </div>
 
             </div>
@@ -804,22 +615,22 @@
                         <div class="space-y-5">
                             <div>
                                 <label class="block text-gray-300 text-sm font-semibold mb-2">الاسم الكامل</label>
-                                <input type="text" class="form-input" placeholder="أدخل اسمك" required>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl bg-brand-dark/50 border border-brand-gold/10 text-white placeholder-gray-500 focus:border-brand-gold focus:outline-none transition-all" placeholder="أدخل اسمك" required>
                             </div>
                             
                             <div>
                                 <label class="block text-gray-300 text-sm font-semibold mb-2">البريد الإلكتروني</label>
-                                <input type="email" class="form-input" placeholder="أدخل بريدك الإلكتروني" required>
+                                <input type="email" class="w-full px-4 py-3 rounded-xl bg-brand-dark/50 border border-brand-gold/10 text-white placeholder-gray-500 focus:border-brand-gold focus:outline-none transition-all" placeholder="أدخل بريدك الإلكتروني" required>
                             </div>
                             
                             <div>
                                 <label class="block text-gray-300 text-sm font-semibold mb-2">رقم الهاتف</label>
-                                <input type="tel" class="form-input" placeholder="أدخل رقم هاتفك">
+                                <input type="tel" class="w-full px-4 py-3 rounded-xl bg-brand-dark/50 border border-brand-gold/10 text-white placeholder-gray-500 focus:border-brand-gold focus:outline-none transition-all" placeholder="أدخل رقم هاتفك">
                             </div>
                             
                             <div>
                                 <label class="block text-gray-300 text-sm font-semibold mb-2">نوع الخدمة</label>
-                                <select class="form-input" required>
+                                <select class="w-full px-4 py-3 rounded-xl bg-brand-dark/50 border border-brand-gold/10 text-white focus:border-brand-gold focus:outline-none transition-all">
                                     <option value="">اختر الخدمة</option>
                                     <option value="media-buying">إدارة حملات إعلانية</option>
                                     <option value="video-production">إنتاج فيديو ومونتاج</option>
@@ -831,7 +642,7 @@
                             
                             <div>
                                 <label class="block text-gray-300 text-sm font-semibold mb-2">الرسالة</label>
-                                <textarea class="form-input form-textarea" placeholder="اكتب تفاصيل مشروعك هنا..." required></textarea>
+                                <textarea class="w-full px-4 py-3 rounded-xl bg-brand-dark/50 border border-brand-gold/10 text-white placeholder-gray-500 focus:border-brand-gold focus:outline-none transition-all min-h-[140px]" placeholder="اكتب تفاصيل مشروعك هنا..." required></textarea>
                             </div>
                             
                             <button type="submit" class="w-full gold-gradient-bg text-black font-bold py-4 rounded-xl text-lg hover:shadow-xl hover:shadow-brand-gold/20 hover:scale-[1.02] transition-all duration-300">
