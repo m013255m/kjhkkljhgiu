@@ -17,8 +17,11 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- AOS Animation Library -->
+    <!-- AOS Animation Library CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Lenis Smooth Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.css">
 
     <script>
         tailwind.config = {
@@ -26,8 +29,8 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#070b14',
-                            card: '#0f172a',
+                            dark: '#0a0f1d',
+                            card: '#12192c',
                             border: '#1e293b',
                             gold: '#d4af37',
                             goldLight: '#f3e5ab',
@@ -50,52 +53,32 @@
             overflow-x: hidden !important;
             width: 100%;
             position: relative;
-            background-color: #050811;
-            color: #f1f5f9;
         }
         body {
             font-family: 'Cairo', sans-serif;
+            background-color: #070b14;
+            color: #f1f5f9;
         }
-
-        /* Reading Progress Line */
-        #scroll-progress {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #d4af37, #f3e5ab);
-            z-index: 100000;
-            width: 0%;
-            transition: width 0.1s ease-out;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-        }
-
-        /* Typography & Custom Colors */
         .gold-gradient-text {
-            background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 50%, #F3E5AB 100%);
+            background: linear-gradient(135deg, #FFF 0%, #D4AF37 50%, #F3E5AB 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .gold-gradient-bg {
             background: linear-gradient(135deg, #d4af37 0%, #b89628 100%);
         }
-
-        /* Glassmorphic Cards with Smooth Hover */
         .glass-card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(18, 25, 44, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(212, 175, 55, 0.15);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
         }
         .glass-card:hover {
-            border-color: rgba(212, 175, 55, 0.6);
+            border-color: rgba(212, 175, 55, 0.5);
             transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 15px 35px -10px rgba(212, 175, 55, 0.25);
         }
-
-        /* Dynamic Glow Effects */
         .glow-effect {
             position: absolute;
             width: 300px;
@@ -103,20 +86,6 @@
             background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
             border-radius: 50%;
             pointer-events: none;
-            filter: blur(20px);
-        }
-
-        /* Interactive Cursor Follower Glow (Desktop) */
-        #cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0) 70%);
-            pointer-events: none;
-            z-index: 99;
-            transform: translate(-50%, -50%);
-            transition: transform 0.15s ease-out, opacity 0.3s ease;
         }
 
         /* Cinematic Intro Animation Styles */
@@ -150,7 +119,6 @@
             background: linear-gradient(90deg, transparent, #d4af37, transparent);
             animation: expandLine 1.5s ease-in-out forwards 0.5s;
         }
-
         @keyframes cinematicReveal {
             0% { opacity: 0; transform: scale(0.85) translateY(20px); filter: blur(8px); }
             100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
@@ -163,23 +131,9 @@
             0% { width: 0%; }
             100% { width: 80%; }
         }
-
-        /* Parallax Background Grid Lines */
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        }
     </style>
 </head>
-<body class="selection:bg-brand-gold selection:text-black bg-grid-pattern">
-
-    <!-- Reading Progress Bar -->
-    <div id="scroll-progress"></div>
-
-    <!-- Mouse Dynamic Light (Desktop Only) -->
-    <div id="cursor-glow" class="hidden lg:block"></div>
+<body class="selection:bg-brand-gold selection:text-black">
 
     <!-- Cinematic Intro Overlay -->
     <div id="cinematic-intro">
@@ -198,15 +152,14 @@
     <!-- Glowing Background Highlights -->
     <div class="glow-effect top-10 right-0"></div>
     <div class="glow-effect top-1/2 left-0"></div>
-    <div class="glow-effect bottom-20 right-10"></div>
 
     <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border/60 transition-all duration-300" id="main-header">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-brand-gold flex items-center justify-center bg-brand-card group-hover:scale-105 transition-transform shadow-lg shadow-brand-gold/10">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-brand-gold flex items-center justify-center bg-brand-card group-hover:scale-105 transition-transform">
                         <span class="text-brand-gold font-black text-lg sm:text-xl tracking-wider">MA</span>
                     </div>
                     <div>
@@ -227,7 +180,7 @@
 
                 <!-- Header CTA Button -->
                 <div class="hidden sm:flex items-center gap-3">
-                    <a href="https://wa.me/201060474659" target="_blank" class="gold-gradient-bg text-black font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-full hover:shadow-lg hover:shadow-brand-gold/20 transition-all flex items-center gap-2 text-xs sm:text-sm hover:scale-105">
+                    <a href="https://wa.me/201060474659" target="_blank" class="gold-gradient-bg text-black font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-full hover:shadow-lg hover:shadow-brand-gold/20 transition-all flex items-center gap-2 text-xs sm:text-sm">
                         <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
                         <span>تواصل واتساب</span>
                     </a>
@@ -259,31 +212,31 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="fade-up" data-aos-duration="1000">
             
             <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-brand-gold text-xs sm:text-sm font-semibold mb-6 border border-brand-gold/30">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-brand-gold text-xs sm:text-sm font-semibold mb-6 border border-brand-gold/30" data-aos="zoom-in" data-aos-delay="100">
                 <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
                 <span>متاح لاستلام المشاريع والحملات الإعلانية</span>
             </div>
 
             <!-- Main Title -->
-            <h1 class="text-3xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-4 sm:mb-6">
+            <h1 class="text-3xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-4 sm:mb-6" data-aos="fade-up" data-aos-delay="200">
                 أهلاً بك، أنا <span class="gold-gradient-text">محمد عادل</span>
             </h1>
-            <p class="text-base sm:text-2xl text-gray-300 font-medium max-w-3xl mx-auto mb-4 leading-normal">
+            <p class="text-base sm:text-2xl text-gray-300 font-medium max-w-3xl mx-auto mb-4 leading-normal" data-aos="fade-up" data-aos-delay="300">
                 خبير تسويق إلكتروني &nbsp;|&nbsp; ميديا باير &nbsp;|&nbsp; متخصص إعلانات ممولة &nbsp;|&nbsp; مصور ومونتير فيديو
             </p>
-            <p class="text-xs sm:text-base text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2">
+            <p class="text-xs sm:text-base text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2" data-aos="fade-up" data-aos-delay="400">
                 خبرة تزيد عن 7 سنوات في تحويل ميزانيات الإعلانات إلى أرباح حقيقية، وبناء الحملات الإستراتيجية عالية العائد (ROAS)، مع إنتاج وصناعة محتوى بصري وتصميمات احترافية تجذب العملاء.
             </p>
 
             <!-- Direct Portfolio Links CTA Group -->
-            <div class="bg-brand-card/90 border border-brand-gold/30 rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto shadow-2xl backdrop-blur-md mb-8 sm:mb-12" data-aos="zoom-in" data-aos-delay="200">
+            <div id="portfolio-links" class="bg-brand-card/90 border border-brand-gold/30 rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto shadow-2xl backdrop-blur-md mb-8 sm:mb-12" data-aos="zoom-in" data-aos-delay="500">
                 <h3 class="text-sm sm:text-lg font-bold text-brand-gold mb-4 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-folder-open"></i> روابط المعارض السريعة Direct Portfolio Links:
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                     
                     <!-- Link 1: Media Buying Projects -->
-                    <a href="https://drive.google.com" target="_blank" class="p-3.5 sm:p-4 rounded-xl bg-gradient-to-br from-blue-900/40 to-brand-card border border-blue-500/30 hover:border-blue-400 transition-all group flex flex-col items-center text-center">
+                    <a href="https://drive.google.com" target="_blank" class="p-3.5 sm:p-4 rounded-xl bg-gradient-to-br from-blue-900/40 to-brand-card border border-blue-500/30 hover:border-blue-400 transition-all group flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="600">
                         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-lg sm:text-xl mb-2.5 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
@@ -293,7 +246,7 @@
                     </a>
 
                     <!-- Link 2: Videos Portfolio -->
-                    <a href="https://drive.google.com" target="_blank" class="p-3.5 sm:p-4 rounded-xl bg-gradient-to-br from-red-900/40 to-brand-card border border-red-500/30 hover:border-red-400 transition-all group flex flex-col items-center text-center">
+                    <a href="https://drive.google.com" target="_blank" class="p-3.5 sm:p-4 rounded-xl bg-gradient-to-br from-red-900/40 to-brand-card border border-red-500/30 hover:border-red-400 transition-all group flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="700">
                         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center text-lg sm:text-xl mb-2.5 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-film"></i>
                         </div>
@@ -303,7 +256,7 @@
                     </a>
 
                     <!-- Link 3: Designs Portfolio -->
-                    <a href="https://behance.net" target="_blank" class="p-3.5 sm:p-4 rounded-xl bg-gradient-to-br from-amber-900/40 to-brand-card border border-brand-gold/30 hover:border-brand-gold transition-all group flex flex-col items-center text-center">
+                    <a href="https://behance.net" target="_blank" class="p-3.5 sm:p-4 rounded-xl bg-gradient-to-br from-amber-900/40 to-brand-card border border-brand-gold/30 hover:border-brand-gold transition-all group flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="800">
                         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-lg sm:text-xl mb-2.5 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-palette"></i>
                         </div>
@@ -316,8 +269,8 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-2">
-                <a href="#contact" class="gold-gradient-bg text-black font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg hover:shadow-xl hover:shadow-brand-gold/20 transition-all flex items-center justify-center gap-2.5 hover:scale-105">
+            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-2" data-aos="fade-up" data-aos-delay="900">
+                <a href="#contact" class="gold-gradient-bg text-black font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg hover:shadow-xl hover:shadow-brand-gold/20 transition-all flex items-center justify-center gap-2.5">
                     <i class="fa-solid fa-paper-plane"></i>
                     <span>تواصل معي فوراً</span>
                 </a>
@@ -330,24 +283,24 @@
         </div>
     </section>
 
-    <!-- Key Metrics / Achievements Bar with Animated Counter -->
+    <!-- Key Metrics / Achievements Bar -->
     <section class="py-10 sm:py-12 bg-brand-card/50 border-y border-brand-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1">+<span class="counter" data-target="7">0</span> سنوات</div>
+                <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1">+7 سنوات</div>
                     <div class="text-xs sm:text-sm text-gray-400">خبرة متصلة في التسويق الإعلاني</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1"><span class="counter" data-target="100">0</span>%</div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1">100%</div>
                     <div class="text-xs sm:text-sm text-gray-400">تركيز على تحقيق أعلى ROAS</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1">+<span class="counter" data-target="50">0</span> ألف</div>
-                    <div class="text-xs sm:text-sm text-gray-400">عميل محتمل ورسائل ناجحة</div>
+                <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1">آلاف العملاء</div>
+                    <div class="text-xs sm:text-sm text-gray-400">توليد رسائل وعملاء محتملين</div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1">+<span class="counter" data-target="5">0</span> منصات</div>
+                <div data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-brand-gold mb-1">+5 منصات</div>
                     <div class="text-xs sm:text-sm text-gray-400">إدارة ميزانيات احترافية</div>
                 </div>
             </div>
@@ -360,7 +313,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
                 <!-- Info Column -->
-                <div class="lg:col-span-7" data-aos="fade-right">
+                <div class="lg:col-span-7" data-aos="fade-right" data-aos-duration="1000">
                     <div class="inline-block px-3 py-1 rounded-md bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold mb-3 border border-brand-gold/20">نبذة احترافية</div>
                     <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4 sm:mb-6 leading-tight">
                         خبرة تتجاوز 7 سنوات في <span class="gold-gradient-text">إدارة الحملات وزيادة المبيعات</span>
@@ -374,50 +327,47 @@
 
                     <!-- Fast Contact Card Info -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                        <div class="p-3.5 sm:p-4 rounded-xl glass-card flex items-center gap-3">
+                        <div class="p-3.5 sm:p-4 rounded-xl glass-card flex items-center gap-3" data-aos="flip-up" data-aos-delay="200">
                             <i class="fa-solid fa-location-dot text-brand-gold text-xl sm:text-2xl"></i>
                             <div>
                                 <div class="text-[10px] sm:text-xs text-gray-400">الموقع الحالي</div>
                                 <div class="text-xs sm:text-sm font-bold text-white">القاهرة - شبرا / بنها</div>
                             </div>
                         </div>
-                        <div class="p-3.5 sm:p-4 rounded-xl glass-card flex items-center gap-3">
+                        <div class="p-3.5 sm:p-4 rounded-xl glass-card flex items-center gap-3" data-aos="flip-up" data-aos-delay="300">
                             <i class="fa-solid fa-envelope text-brand-gold text-xl sm:text-2xl"></i>
                             <div>
                                 <div class="text-[10px] sm:text-xs text-gray-400">البريد الإلكتروني</div>
-                                <div class="text-xs sm:text-sm font-bold text-white break-all">m013255m@gmail.com</div>
+                                <div class="text-xs sm:text-sm font-bold text-white">m.adel.marketing@gmail.com</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card Badge Column -->
-                <div class="lg:col-span-5" data-aos="fade-left">
-                    <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden border-2 border-brand-gold/30">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                            <i class="fa-solid fa-trophy text-2xl sm:text-3xl text-brand-gold"></i>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-center text-white mb-4 sm:mb-6">أبرز الإنجازات المهنية</h3>
-                        <ul class="space-y-3 sm:space-y-4 text-gray-300 text-xs sm:text-sm">
-                            <li class="flex items-start gap-2.5">
+                <!-- Highlight Card / Visual -->
+                <div class="lg:col-span-5" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-brand-gold/30">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-brand-gold/10 rounded-full blur-2xl"></div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-star text-brand-gold"></i>
+                            لماذا للعمل معي؟
+                        </h3>
+                        <ul class="space-y-4 text-sm sm:text-base text-gray-300">
+                            <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-                                <span>خبرة عمل متراكمة أكثر من 7 سنوات في مجالات تسويقية متنوعة.</span>
+                                <span>تركيز متكامل على تحقيق **عائد أرباح ملموس (ROAS)** وليس فقط مجرد وصول وفيديوهات.</span>
                             </li>
-                            <li class="flex items-start gap-2.5">
+                            <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-                                <span>إدارة حملات إعلانية ضخمة في مجالات العقارات، التجارة الإلكترونية، والخدمات.</span>
+                                <span>صناعة محتوى بصري متكامل (تصوير + مونتاج + تصميم) مخصص للحملات.</span>
                             </li>
-                            <li class="flex items-start gap-2.5">
+                            <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-                                <span>تحقيق آلاف الرسائل والعملاء المحتملين ذوي الجودة العالية (Qualified Leads).</span>
+                                <span>إمكانيات تحليل واستستهداف دقيقة لمختلف منصات الإعلانات الشائعة.</span>
                             </li>
-                            <li class="flex items-start gap-2.5">
+                            <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-                                <span>تحسين أداء الصفحات وزيادة معدلات التحويل (Conversion Rate Optimization).</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-                                <span>إنتاج وصناعة محتوى مرئي احترافي مخصص خصيصاً للإعلانات والتسويق.</span>
+                                <span>متابعة وتقارير دورية شفافة لتحسين وتطوير أداء المبيعات باستمرار.</span>
                             </li>
                         </ul>
                     </div>
@@ -428,331 +378,219 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 sm:py-24 bg-brand-card/30">
+    <section id="services" class="py-16 sm:py-24 bg-brand-card/30 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-brand-gold text-xs sm:text-sm font-semibold tracking-wider uppercase">مجالات التخصص</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">الخدمات والحلول التسويقية الاحترافية</h2>
-                <p class="text-gray-400 text-xs sm:text-base mt-2">منظومة عمل متكاملة تبدأ من استراتيجية الإعلان وحتى تصويره ومونتاجه وتحليله.</p>
+                <div class="inline-block px-3 py-1 rounded-md bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold mb-3 border border-brand-gold/20">الخدمات الأساسية</div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                    خدمات تسويقية وتنفيذية <span class="gold-gradient-text">لنمو أعمالك</span>
+                </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Service 1 -->
-                <div class="glass-card p-6 sm:p-8 rounded-2xl relative group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl sm:text-2xl mb-5 group-hover:bg-brand-gold group-hover:text-black transition-all">
-                        <i class="fa-solid fa-bullhorn"></i>
+                <div class="glass-card p-6 sm:p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-2xl mb-6">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">إدارة الإعلانات الممولة (Media Buying)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            تخطيط وتنفيذ حملات إعلانية ممولة احترافية على منصات ميتا، جوجل، وتيك توك للوصول لأفضل شريحة مستهدفة وبأقل تكلفة تحويل.
+                        </p>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2.5">إدارة الحملات والميديا باير</h3>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5">
-                        تخطيط وإطلاق الحملات الإعلانية على Meta (فيسبوك وإنستجرام)، جوجل، تيك توك، سناب شات، ويوتيوب مع الاستهداف الدقيق وتحقيق أقصى ROAS.
-                    </p>
-                    <a href="#portfolio-links" class="text-xs font-bold text-brand-gold flex items-center gap-2">عرض أداء الحملات <i class="fa-solid fa-arrow-left"></i></a>
+                    <span class="text-xs text-brand-gold font-semibold flex items-center gap-1">استهداف دقيق &bull; تحسين استمرار</span>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="glass-card p-6 sm:p-8 rounded-2xl relative group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl sm:text-2xl mb-5 group-hover:bg-brand-gold group-hover:text-black transition-all">
-                        <i class="fa-solid fa-video"></i>
+                <div class="glass-card p-6 sm:p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-2xl mb-6">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">صناعة وتعديل الفيديوهات (Video Editing)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            إنتاج فيديوهات إعلانية، ريلز جاذبة، ومونتاج سينمائي يستحوذ على انتباه المشاهد في الثواني الأولى ويحفزه على الشراء.
+                        </p>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2.5">تصوير ومونتاج الفيديو الإعلاني</h3>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5">
-                        صناعة الفيديوهات الإعلانية الاحترافية، مونتاج الريلز والفيديوهات الطويلة باستخدام Premiere Pro وCapCut بأعلى جودة وتأثير.
-                    </p>
-                    <a href="#portfolio-links" class="text-xs font-bold text-brand-gold flex items-center gap-2">تصفح الفيديوهات <i class="fa-solid fa-arrow-left"></i></a>
+                    <span class="text-xs text-brand-gold font-semibold flex items-center gap-1">ريلز &bull; موشن جرافيك &bull; إعلانات</span>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="glass-card p-6 sm:p-8 rounded-2xl relative group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl sm:text-2xl mb-5 group-hover:bg-brand-gold group-hover:text-black transition-all">
-                        <i class="fa-solid fa-pen-nib"></i>
+                <div class="glass-card p-6 sm:p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-2xl mb-6">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">التصميم الجرافيكي والهويات البصرية</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            تصميم بوستات السوشيال ميديا، بنرات الإعلانات، والشعارات التي تعكس هوية علاماتك التجارية بلمسات راقية ومميزة.
+                        </p>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2.5">التصميم الجرافيكي والموشن جرافيك</h3>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5">
-                        تصميم منشورات السوشيال ميديا، الإعلانات الجاذبة، الهويات البصرية، والتصاميم المتحركة باستخدام Photoshop وCanva.
-                    </p>
-                    <a href="#portfolio-links" class="text-xs font-bold text-brand-gold flex items-center gap-2">تصفح التصاميم <i class="fa-solid fa-arrow-left"></i></a>
+                    <span class="text-xs text-brand-gold font-semibold flex items-center gap-1">هويات &bull; تصاميم سوشيال ميديا</span>
                 </div>
-
-                <!-- Service 4 -->
-                <div class="glass-card p-6 sm:p-8 rounded-2xl relative group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl sm:text-2xl mb-5 group-hover:bg-brand-gold group-hover:text-black transition-all">
-                        <i class="fa-solid fa-users-viewfinder"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2.5">توليد العملاء المحتملين (Leads)</h3>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                        بناء مسارات المبيعات (Funnels) وحملات لجمع البيانات والرسائل للأنشطة التجارية والشركات بأسعار تكلفة ممتازة.
-                    </p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="glass-card p-6 sm:p-8 rounded-2xl relative group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl sm:text-2xl mb-5 group-hover:bg-brand-gold group-hover:text-black transition-all">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2.5">تحسين محركات البحث (SEO)</h3>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                        تحسين ظهور المواقع والصفحات في نتائج البحث الأولى بأساليب متطورة تضمن زيارات مجانية ومستدامة.
-                    </p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="glass-card p-6 sm:p-8 rounded-2xl relative group" data-aos="fade-up" data-aos-delay="600">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl sm:text-2xl mb-5 group-hover:bg-brand-gold group-hover:text-black transition-all">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2.5">إدارة وتوزيع الميزانيات</h3>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                        تحليل الأداء الإعلاني، تقليل تكلفة العميل (CPA)، وتوسيع نطاق الحملات (Scaling) بشكل مدروس وآمن.
-                    </p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Dedicated Portfolio Hub / Direct Links Section -->
-    <section id="portfolio-links" class="py-16 sm:py-24 relative bg-brand-dark">
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-brand-gold text-xs sm:text-sm font-semibold tracking-wider uppercase">Portfolio Categories</span>
-                <h2 class="text-2xl sm:text-5xl font-extrabold text-white mt-1">معرض الأعمال والمعاينات المباشرة</h2>
-                <p class="text-gray-400 text-xs sm:text-base mt-2">يمكنك الضغط على أي قسم أدناه للانتقال المباشر لرؤية نماذج ومشاريع السابقة</p>
+                <div class="inline-block px-3 py-1 rounded-md bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold mb-3 border border-brand-gold/20">الأدوات والمهارات</div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                    منصات وأدوات <span class="gold-gradient-text">نعمل بها بمهارة</span>
+                </h2>
             </div>
 
-            <!-- Big Interactive Hub Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-
-                <!-- Hub Card 1: Media Buyer -->
-                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                    <div class="p-6 sm:p-8">
-                        <div class="flex items-center justify-between mb-5">
-                            <span class="p-3 rounded-xl bg-blue-500/10 text-blue-400 text-xl sm:text-2xl"><i class="fa-solid fa-chart-column"></i></span>
-                            <span class="text-[10px] sm:text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full font-bold">Media Buying</span>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2.5 group-hover:text-brand-gold transition-colors">أعمال الميديا باير والإعلانات</h3>
-                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5">
-                            يحتوي هذا المعرض على نتائج الحملات الممولة، التقارير الإحصائية، استراتيجيات الاستهداف، ونسب العائد على الاستثمار ROAS على مختلف المنصات.
-                        </p>
-                        <ul class="text-xs text-gray-300 space-y-2 mb-4">
-                            <li><i class="fa-solid fa-check text-blue-400 me-2"></i>حملات Meta (Facebook & Instagram)</li>
-                            <li><i class="fa-solid fa-check text-blue-400 me-2"></i>حملات Google & TikTok Ads</li>
-                            <li><i class="fa-solid fa-check text-blue-400 me-2"></i>إحصائيات تحويل العملاء Leads</li>
-                        </ul>
-                    </div>
-                    <div class="p-4 sm:p-6 bg-brand-card border-t border-brand-border/60">
-                        <a href="https://drive.google.com" target="_blank" class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-center block text-xs sm:text-sm transition-all shadow-lg shadow-blue-900/30">
-                            فتح ملف الأعمال والنتائج <i class="fa-solid fa-arrow-up-right-from-square ms-1 text-[10px]"></i>
-                        </a>
-                    </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 text-center">
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fa-brands fa-meta text-3xl sm:text-4xl text-blue-500 mb-2"></i>
+                    <span class="font-bold text-sm text-white">Meta Ads</span>
                 </div>
-
-                <!-- Hub Card 2: Video Editing -->
-                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-                    <div class="p-6 sm:p-8">
-                        <div class="flex items-center justify-between mb-5">
-                            <span class="p-3 rounded-xl bg-red-500/10 text-red-400 text-xl sm:text-2xl"><i class="fa-solid fa-clapperboard"></i></span>
-                            <span class="text-[10px] sm:text-xs bg-red-500/20 text-red-300 px-3 py-1 rounded-full font-bold">Video Production</span>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2.5 group-hover:text-brand-gold transition-colors">معرض المونتاج والفيديو</h3>
-                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5">
-                            شاهد نماذج الفيديوهات الإعلانية، تصوير المنتجات، فيديوهات Reels & Shorts، والموشن جرافيك المصممة لجذب انتباه العميل.
-                        </p>
-                        <ul class="text-xs text-gray-300 space-y-2 mb-4">
-                            <li><i class="fa-solid fa-check text-red-400 me-2"></i>فيديوهات إعلانية تسويقية (Reels/TikTok)</li>
-                            <li><i class="fa-solid fa-check text-red-400 me-2"></i>مونتاج احترافي Adobe Premiere</li>
-                            <li><i class="fa-solid fa-check text-red-400 me-2"></i>تعديل ألوان ومؤثرات صوتية CapCut</li>
-                        </ul>
-                    </div>
-                    <div class="p-4 sm:p-6 bg-brand-card border-t border-brand-border/60">
-                        <a href="https://drive.google.com" target="_blank" class="w-full py-3 px-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-center block text-xs sm:text-sm transition-all shadow-lg shadow-red-900/30">
-                            مشاهدة الفيديوهات المباشرة <i class="fa-solid fa-play ms-1 text-[10px]"></i>
-                        </a>
-                    </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fa-brands fa-google text-3xl sm:text-4xl text-red-500 mb-2"></i>
+                    <span class="font-bold text-sm text-white">Google Ads</span>
                 </div>
-
-                <!-- Hub Card 3: Graphic Design -->
-                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
-                    <div class="p-6 sm:p-8">
-                        <div class="flex items-center justify-between mb-5">
-                            <span class="p-3 rounded-xl bg-brand-gold/10 text-brand-gold text-xl sm:text-2xl"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                            <span class="text-[10px] sm:text-xs bg-brand-gold/20 text-brand-gold px-3 py-1 rounded-full font-bold">Graphic Design</span>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2.5 group-hover:text-brand-gold transition-colors">معرض التصاميم الجرافيكية</h3>
-                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5">
-                            مجموعة من أفضل التنسيقات البصرية، تصاميم منصات التواصل الاجتماعي، البنرات الإعلانية، والتصاميم المبتكرة ببرامج Photoshop وCanva.
-                        </p>
-                        <ul class="text-xs text-gray-300 space-y-2 mb-4">
-                            <li><i class="fa-solid fa-check text-brand-gold me-2"></i>تصاميم بوستات وإعلانات Social Media</li>
-                            <li><i class="fa-solid fa-check text-brand-gold me-2"></i>دمج وسوشيال ميديا فوتوشوب</li>
-                            <li><i class="fa-solid fa-check text-brand-gold me-2"></i>هويات بصرية وبنرات جرافيك</li>
-                        </ul>
-                    </div>
-                    <div class="p-4 sm:p-6 bg-brand-card border-t border-brand-border/60">
-                        <a href="https://behance.net" target="_blank" class="w-full py-3 px-4 rounded-xl gold-gradient-bg hover:opacity-90 text-black font-bold text-center block text-xs sm:text-sm transition-all shadow-lg shadow-brand-gold/20">
-                            تصفح معرض التصاميم <i class="fa-solid fa-arrow-up-right-from-square ms-1 text-[10px]"></i>
-                        </a>
-                    </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fa-brands fa-tiktok text-3xl sm:text-4xl text-white mb-2"></i>
+                    <span class="font-bold text-sm text-white">TikTok Ads</span>
                 </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills & Tools Section -->
-    <section id="skills" class="py-16 sm:py-24 bg-brand-card/30 border-t border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-brand-gold text-xs sm:text-sm font-semibold tracking-wider uppercase">المهارات والبرامج</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">المنصات والأدوات الاحترافية</h2>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="glass-card p-4 sm:p-5 rounded-xl text-center flex flex-col items-center justify-center">
-                    <i class="fa-brands fa-facebook text-2xl sm:text-3xl text-blue-500 mb-2"></i>
-                    <span class="font-bold text-xs sm:text-sm text-white">Meta Ads</span>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fa-solid fa-photo-film text-3xl sm:text-4xl text-purple-400 mb-2"></i>
+                    <span class="font-bold text-sm text-white">Premiere Pro</span>
                 </div>
-                <div class="glass-card p-4 sm:p-5 rounded-xl text-center flex flex-col items-center justify-center">
-                    <i class="fa-brands fa-google text-2xl sm:text-3xl text-red-400 mb-2"></i>
-                    <span class="font-bold text-xs sm:text-sm text-white">Google Ads</span>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fa-solid fa-palette text-3xl sm:text-4xl text-blue-400 mb-2"></i>
+                    <span class="font-bold text-sm text-white">Photoshop</span>
                 </div>
-                <div class="glass-card p-4 sm:p-5 rounded-xl text-center flex flex-col items-center justify-center">
-                    <i class="fa-brands fa-tiktok text-2xl sm:text-3xl text-pink-500 mb-2"></i>
-                    <span class="font-bold text-xs sm:text-sm text-white">TikTok Ads</span>
-                </div>
-                <div class="glass-card p-4 sm:p-5 rounded-xl text-center flex flex-col items-center justify-center">
-                    <i class="fa-brands fa-snapchat text-2xl sm:text-3xl text-yellow-400 mb-2"></i>
-                    <span class="font-bold text-xs sm:text-sm text-white">Snapchat Ads</span>
-                </div>
-                <div class="glass-card p-4 sm:p-5 rounded-xl text-center flex flex-col items-center justify-center">
-                    <i class="fa-solid fa-photo-film text-2xl sm:text-3xl text-purple-500 mb-2"></i>
-                    <span class="font-bold text-xs sm:text-sm text-white">Premiere Pro</span>
-                </div>
-                <div class="glass-card p-4 sm:p-5 rounded-xl text-center flex flex-col items-center justify-center">
-                    <i class="fa-solid fa-image text-2xl sm:text-3xl text-blue-400 mb-2"></i>
-                    <span class="font-bold text-xs sm:text-sm text-white">Photoshop</span>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fa-solid fa-chart-pie text-3xl sm:text-4xl text-brand-gold mb-2"></i>
+                    <span class="font-bold text-sm text-white">Analytics</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Timeline Section -->
-    <section id="experience" class="py-16 sm:py-24">
+    <!-- Experience / Timeline Section -->
+    <section id="experience" class="py-16 sm:py-24 bg-brand-card/30">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-brand-gold text-xs sm:text-sm font-semibold tracking-wider uppercase">مسيرة العمل</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">الخبرات والمسار المهني</h2>
+                <div class="inline-block px-3 py-1 rounded-md bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold mb-3 border border-brand-gold/20">مسيرة العمل</div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                    خبرة عملية <span class="gold-gradient-text">طويلة ومثمرة</span>
+                </h2>
             </div>
 
-            <div class="space-y-6 sm:space-y-8" data-aos="fade-up" data-aos-delay="100">
-                <div class="glass-card p-5 sm:p-6 rounded-2xl border-r-4 border-r-brand-gold">
-                    <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
-                        <h3 class="text-base sm:text-xl font-bold text-white">Senior Media Buyer & Digital Marketer</h3>
-                        <span class="text-[10px] sm:text-xs font-bold text-brand-gold bg-brand-gold/10 px-2.5 py-1 rounded-full">2019 - الحاضر</span>
-                    </div>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">إدارة ميزانيات ضخمة، التخطيط الإستراتيجية، إبقاء وتطوير حملات المبيعات وتحقيق العائد المستهدف (ROAS) عبر السوشيال ميديا ومحركات البحث.</p>
+            <div class="space-y-8 relative border-r-2 border-brand-gold/30 mr-4 sm:mr-8 pr-6 sm:pr-10">
+                <!-- Timeline Item 1 -->
+                <div class="relative" data-aos="fade-right" data-aos-delay="100">
+                    <div class="absolute -right-[31px] sm:-right-[47px] top-1.5 w-5 h-5 rounded-full bg-brand-gold border-4 border-brand-dark"></div>
+                    <span class="text-xs text-brand-gold font-bold">2018 - الحاضر</span>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mt-1">خبير تسويق وميديا باير مستقل & Consultant</h3>
+                    <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                        إدارة الحملات الإعلانية لمئات المشاريع والشركات في مجالات التجارة الإلكترونية، العقارات، الخدمات، وبناء خطط التسويق المتكاملة.
+                    </p>
                 </div>
 
-                <div class="glass-card p-5 sm:p-6 rounded-2xl border-r-4 border-r-brand-accent">
-                    <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
-                        <h3 class="text-base sm:text-xl font-bold text-white">Video Editor & Content Creator</h3>
-                        <span class="text-[10px] sm:text-xs font-bold text-brand-accent bg-brand-accent/10 px-2.5 py-1 rounded-full">2017 - الحاضر</span>
-                    </div>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">إنتاج المحتوى المرئي، تصوير المراجعات، ومونتاج الفيديوهات الإعلانية السريعة للطبع الإعلاني المعاصر (Reels & Shorts).</p>
+                <!-- Timeline Item 2 -->
+                <div class="relative" data-aos="fade-right" data-aos-delay="200">
+                    <div class="absolute -right-[31px] sm:-right-[47px] top-1.5 w-5 h-5 rounded-full bg-brand-gold border-4 border-brand-dark"></div>
+                    <span class="text-xs text-brand-gold font-bold">2020 - الحاضر</span>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mt-1">متخصص مونتاج وإنتاج الفيديوهات الإعلانية</h3>
+                    <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                        إنتاج وتعديل مئات الفيديوهات الترويجية وريلز انستجرام وتيك توك المحسنة لإحداث أعلى معدلات التفاعل والمبيعات.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 sm:py-24 bg-brand-card/40 border-t border-brand-border">
+    <section id="contact" class="py-16 sm:py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-brand-gold text-xs sm:text-sm font-semibold tracking-wider uppercase">ابدأ مشروعك الآن</span>
-                <h2 class="text-2xl sm:text-5xl font-extrabold text-white mt-1">تواصل معي بشكل مباشر</h2>
-                <p class="text-gray-400 text-xs sm:text-base mt-2">جاهز لمناقشة أهداف عملك وتحويل ميزانيتك الإعلانية إلى نتائج ملموسة.</p>
-            </div>
+            <div class="glass-card rounded-3xl p-8 sm:p-12 text-center max-w-4xl mx-auto border border-brand-gold/40 relative overflow-hidden" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="absolute -top-20 -right-20 w-48 h-48 bg-brand-gold/20 rounded-full blur-3xl"></div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+                    هل أنت مستعد لتطوير <span class="gold-gradient-text">حملاتك ومبيعاتك؟</span>
+                </h2>
+                <p class="text-gray-300 text-sm sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                    تواصل معي الآن لمناقشة أهداف مشروعك وبدء خطة تسويقية وإعلانية تضمن لك تحقيق أفضل العوائد الأرباح.
+                </p>
 
-            <div class="max-w-xl mx-auto glass-card p-6 sm:p-8 rounded-2xl text-center" data-aos="zoom-in">
-                <div class="space-y-4 sm:space-y-6">
-                    <a href="https://wa.me/201060474659" target="_blank" class="w-full py-3.5 sm:py-4 px-5 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-green-900/30 hover:scale-105">
-                        <i class="fa-brands fa-whatsapp text-xl sm:text-2xl"></i>
-                        <span>محادثة عبر واتساب مباشرة</span>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/201060474659" target="_blank" class="gold-gradient-bg text-black font-bold px-8 py-4 rounded-xl text-base sm:text-lg hover:shadow-xl hover:shadow-brand-gold/30 transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>تواصل مباشر عبر الواتساب</span>
                     </a>
-
-                    <a href="tel:01060474659" class="w-full py-3.5 sm:py-4 px-5 rounded-xl gold-gradient-bg text-black font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-brand-gold/20 hover:scale-105">
-                        <i class="fa-solid fa-phone text-lg sm:text-xl"></i>
-                        <span>اتصال هاتفي: 01060474659</span>
+                    <a href="tel:01060474659" class="glass-card text-white font-bold px-8 py-4 rounded-xl text-base sm:text-lg hover:border-brand-gold transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
+                        <i class="fa-solid fa-phone text-brand-gold text-xl"></i>
+                        <span>اتصال هاتفي</span>
                     </a>
-
-                    <div class="pt-4 border-t border-brand-border">
-                        <span class="text-xs text-gray-400 block mb-1">أو أرسل عبر البريد الإلكتروني</span>
-                        <a href="mailto:m013255m@gmail.com" class="text-brand-gold font-bold text-sm sm:text-base hover:underline break-all">m013255m@gmail.com</a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-6 sm:py-8 bg-brand-dark border-t border-brand-border text-center text-xs sm:text-sm text-gray-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p>© جميع الحقوق محفوظة لـ <span class="text-brand-gold font-bold">محمد عادل</span> 2026</p>
+    <footer class="py-8 bg-brand-dark border-t border-brand-border text-center text-xs sm:text-sm text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>جميع الحقوق محفوظة &copy; 2026 - **محمد عادل** - خبير التسويق الإلكتروني والميديا باير</p>
         </div>
     </footer>
 
-    <!-- Back To Top Button -->
-    <button id="back-to-top" aria-label="العودة للأعلى" class="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full gold-gradient-bg text-black flex items-center justify-center shadow-xl opacity-0 pointer-events-none transition-all duration-300 hover:scale-110">
-        <i class="fa-solid fa-arrow-up font-bold text-lg"></i>
-    </button>
-
-    <!-- AOS Script Setup -->
+    <!-- JS Animation Libraries Integration -->
+    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
     <script>
-        // Init AOS Animation with Dynamic Settings
+        // Initialize Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Initialize AOS (Animate On Scroll)
         AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: false,
-            mirror: true, // Enables reverse animation when scrolling up
-            disable: window.innerWidth < 640
+            duration: 900,
+            once: true,
+            offset: 80,
+            easing: 'ease-out-cubic'
         });
 
-        // Scroll Progress Bar & Dynamic Header Logic
-        const progressBar = document.getElementById('scroll-progress');
-        const header = document.getElementById('main-header');
-        const backToTopBtn = document.getElementById('back-to-top');
-
-        window.addEventListener('scroll', () => {
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            if(progressBar) progressBar.style.width = progress + '%';
-
-            // Shrink header on scroll
-            if (window.scrollY > 80) {
-                header.classList.add('bg-brand-dark/95', 'shadow-2xl', 'py-1');
-                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                header.classList.remove('bg-brand-dark/95', 'shadow-2xl', 'py-1');
-                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
-            }
+        // Cinematic Intro Loader Script
+        window.addEventListener('DOMContentLoaded', () => {
+            const progress = document.getElementById('intro-progress');
+            const intro = document.getElementById('cinematic-intro');
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        intro.style.opacity = '0';
+                        intro.style.visibility = 'hidden';
+                    }, 500);
+                } else {
+                    width += 5;
+                    progress.style.width = width + '%';
+                }
+            }, 40);
         });
 
-        // Scroll to Top Smooth
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Interactive Cursor Glow Movement
-        const cursorGlow = document.getElementById('cursor-glow');
-        window.addEventListener('mousemove', (e) => {
-            if (cursorGlow) {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            }
-        });
-
-        // Mobile Menu Toggle logic
+        // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -760,61 +598,29 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close Mobile Menu on Link Click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
 
-        // Counter Animation when Scrolled into View
-        let animatedCounters = false;
-        const counters = document.querySelectorAll('.counter');
+        // Register GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
 
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                let count = 0;
-                const speed = target / 50;
-                const updateCount = () => {
-                    count += speed;
-                    if(count < target) {
-                        counter.innerText = Math.ceil(count);
-                        setTimeout(updateCount, 30);
-                    } else {
-                        counter.innerText = target;
+        // GSAP Micro Interactions on Glass Cards
+        gsap.utils.toArray('.glass-card').forEach(card => {
+            gsap.fromTo(card, 
+                { opacity: 0.85 },
+                { 
+                    opacity: 1,
+                    duration: 0.6,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 90%",
+                        toggleActions: "play none none reverse"
                     }
                 }
-                updateCount();
-            });
-        }
-
-        window.addEventListener('scroll', () => {
-            const section = document.querySelector('.counter');
-            if(section) {
-                const position = section.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                if(position < screenPosition && !animatedCounters) {
-                    animatedCounters = true;
-                    animateCounters();
-                }
-            }
-        });
-
-        // Cinematic Loader Logic
-        window.addEventListener('load', () => {
-            const progressBar = document.getElementById('intro-progress');
-            const intro = document.getElementById('cinematic-intro');
-
-            if (progressBar && intro) {
-                progressBar.style.width = '50%';
-                setTimeout(() => { progressBar.style.width = '100%'; }, 400);
-
-                setTimeout(() => {
-                    intro.style.opacity = '0';
-                    intro.style.visibility = 'hidden';
-                }, 1200);
-            }
+            );
         });
     </script>
 </body>
